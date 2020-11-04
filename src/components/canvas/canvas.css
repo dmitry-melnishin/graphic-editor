@@ -1,0 +1,11 @@
+.canvas-container {
+    width: 590px;
+    height: 348px;
+    overflow: scroll;
+}
+
+.canvas {
+    display: inline-block;
+    outline: solid 1px #aaa;
+    vertical-align: top;
+}
