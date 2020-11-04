@@ -1,14 +1,23 @@
-import React, {useMemo} from "react";
+import React, {useMemo, useRef} from "react";
 
 import "./palette.css";
 
 export const Palette = ({ contextRef }) => {
+    const selectedColor = useRef('');
+
+    if (selectedColor.current) {
+        contextRef.current.strokeStyle = selectedColor.current;
+    }
+
     const changeLineColor = event => {
         if (event.target.className !== 'palette-item') {
             return;
         }
 
-        contextRef.current.strokeStyle = event.target.style.backgroundColor;
+        const color = event.target.style.backgroundColor;
+
+        selectedColor.current = color;
+        contextRef.current.strokeStyle = color;
     }
 
     const getColorIntensity = (value, max) => Math.round(value * 255 / max);
